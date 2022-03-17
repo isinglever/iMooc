@@ -1,0 +1,6 @@
+# Project exclude paths
+/imooc-api/target/
+/imooc-common/target/
+/imooc-mapper/target/
+/imooc-pojo/target/
+/imooc-service/target/
