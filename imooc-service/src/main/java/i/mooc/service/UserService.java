@@ -7,4 +7,6 @@ import i.mooc.pojo.bo.UserBO;
 public interface UserService {
     public boolean queryUsernameIsExist(String username);
     public Users creatUser(UserBO userBO);
+    
+    public Users queryUserForLogin(String username, String password);
 }
