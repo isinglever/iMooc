@@ -4,6 +4,7 @@ import i.mooc.pojo.*;
 import i.mooc.pojo.vo.CategoryVO;
 import i.mooc.pojo.vo.CommentLevelCountsVO;
 import i.mooc.pojo.vo.NewItemsVO;
+import i.mooc.pojo.vo.ShopcartVO;
 import i.mooc.utils.PagedGridResult;
 
 import java.util.List;
@@ -53,4 +54,5 @@ public interface ItemService {
     public PagedGridResult searchItems(Integer catId, String sort,
                                       Integer page, Integer pageSize);
 
+    public List<ShopcartVO> queryItemsBySpecIds(String specIds);
 }

@@ -95,7 +95,6 @@
         </select>
     
     
-<!--
         <select id="queryItemsBySpecIds" parameterType="List" resultType="i.mooc.pojo.vo.ShopcartVO">
             SELECT
                 t_items.id as itemId,
@@ -136,6 +135,5 @@
                 stock >= #{pendingCounts}
     
         </update>
--->
     
 </mapper>

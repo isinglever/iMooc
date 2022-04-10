@@ -6,6 +6,7 @@ import i.mooc.pojo.ItemsParam;
 import i.mooc.pojo.ItemsSpec;
 import i.mooc.pojo.vo.CommentLevelCountsVO;
 import i.mooc.pojo.vo.ItemInfoVO;
+import i.mooc.pojo.vo.ShopcartVO;
 import i.mooc.service.ItemService;
 import i.mooc.utils.IMOOCJSONResult;
 import i.mooc.utils.PagedGridResult;
@@ -146,5 +147,19 @@ public class ItemsController extends BaseController{
                 pageSize);
 
         return IMOOCJSONResult.ok(grid);
+    }
+
+    @GetMapping("/refresh")
+    public IMOOCJSONResult refresh(
+            @ApiParam(name = "itemSpecIds", value = "拼接的规格ids", required = true, example = "1001,1003,1005")
+            @RequestParam String itemSpecIds) {
+
+        if (StringUtils.isBlank(itemSpecIds)) {
+            return IMOOCJSONResult.ok();
+        }
+
+        List<ShopcartVO> list = itemService.queryItemsBySpecIds(itemSpecIds);
+
+        return IMOOCJSONResult.ok(list);
     }
 }

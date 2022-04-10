@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import i.mooc.enums.CommentLevel;
 import i.mooc.mapper.*;
 import i.mooc.pojo.*;
-import i.mooc.pojo.vo.CategoryVO;
-import i.mooc.pojo.vo.CommentLevelCountsVO;
-import i.mooc.pojo.vo.ItemCommentVO;
-import i.mooc.pojo.vo.SearchItemsVO;
+import i.mooc.pojo.vo.*;
 import i.mooc.service.CategoryService;
 import i.mooc.service.ItemService;
 import i.mooc.utils.DesensitizationUtil;
@@ -19,9 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -154,6 +149,16 @@ public class ItemServiceImpl implements ItemService {
         List<SearchItemsVO> list = itemsMapperCustom.searchItemsByThirdCat(map);
 
         return setterPagedGrid(list, page);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public List<ShopcartVO> queryItemsBySpecIds(String specIds) {
+        String ids[] = specIds.split(",");
+        List<String> specIdsList = new ArrayList<>();
+        Collections.addAll(specIdsList, ids);
+
+        return itemsMapperCustom.queryItemsBySpecIds(specIdsList);
     }
 
     private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
