@@ -8,6 +8,7 @@ import i.mooc.pojo.*;
 import i.mooc.pojo.vo.CategoryVO;
 import i.mooc.pojo.vo.CommentLevelCountsVO;
 import i.mooc.pojo.vo.ItemCommentVO;
+import i.mooc.pojo.vo.SearchItemsVO;
 import i.mooc.service.CategoryService;
 import i.mooc.service.ItemService;
 import i.mooc.utils.DesensitizationUtil;
@@ -128,6 +129,33 @@ public class ItemServiceImpl implements ItemService {
 
         return setterPagedGrid(list, page);
     }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("keywords", keywords);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVO> list = itemsMapperCustom.searchItems(map);
+
+        return setterPagedGrid(list, page);
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public PagedGridResult searchItems(Integer catId, String sort, Integer page, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("catId", catId);
+        map.put("sort", sort);
+
+        PageHelper.startPage(page, pageSize);
+        List<SearchItemsVO> list = itemsMapperCustom.searchItemsByThirdCat(map);
+
+        return setterPagedGrid(list, page);
+    }
+
     private PagedGridResult setterPagedGrid(List<?> list, Integer page) {
         PageInfo<?> pageList = new PageInfo<>(list);
         PagedGridResult grid = new PagedGridResult();
