@@ -18,7 +18,6 @@ public class BaseController {
     public static final Integer COMMON_PAGE_SIZE = 10;
     public static final Integer PAGE_SIZE = 20;
 
-/*
     // 支付中心的调用地址
     String paymentUrl = "http://payment.t.mukewang.com/foodie-payment/payment/createMerchantOrder";		// produce
 
@@ -34,10 +33,9 @@ public class BaseController {
 //    public static final String IMAGE_USER_FACE_LOCATION = "/workspaces/images/foodie/faces";
 
 
-    @Autowired
-    public MyOrdersService myOrdersService;
+//    @Autowired
+//    public MyOrdersService myOrdersService;
 
-    */
 /**
      * 用于验证用户和订单是否有关联关系，避免非法用户调用
      * @return

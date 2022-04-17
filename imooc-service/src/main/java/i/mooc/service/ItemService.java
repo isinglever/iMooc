@@ -55,4 +55,8 @@ public interface ItemService {
                                       Integer page, Integer pageSize);
 
     public List<ShopcartVO> queryItemsBySpecIds(String specIds);
+    public ItemsSpec queryItemSpecById(String specId);
+    public String queryItemMainImgById(String itemId);
+
+    public void decreaseItemSpecStock(String specId, int buyCounts);
 }
