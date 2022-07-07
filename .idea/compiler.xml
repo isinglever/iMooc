@@ -16,6 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="iMooc" options="-parameters" />
       <module name="imooc-api" options="-parameters" />
       <module name="imooc-common" options="-parameters" />
       <module name="imooc-mapper" options="-parameters" />
